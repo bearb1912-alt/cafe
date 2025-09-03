@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trang Chủ - Cà Phê Mộc</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(to bottom, #fff3e0, #ffe0b2);
+      color: #4e342e;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #d84315;
+      padding: 30px 20px;
+      color: white;
+      text-align: center;
+      animation: slideDown 1s ease-out;
+    }
+    nav {
+      background-color: #ffb300;
+      text-align: center;
+      padding: 15px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #4e342e;
+    }
+    main {
+      padding: 30px 20px;
+      animation: fadeIn 1.5s ease;
+    }
+    .banner {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: fadeInZoom 1s ease;
+    }
+    h2, h3 {
+      margin-top: 30px;
+      font-size: 28px;
+      color: #bf360c;
+      text-align: center;
+      animation: fadeInUp 1.2s ease;
+    }
+    .coffee-img {
+      display: block;
+      max-width: 400px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: float 4s infinite ease-in-out;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background-color: #fff8e1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ffe0b2;
+    }
+    th {
+      background-color: #ff8f00;
+      color: white;
+    }
+    td {
+      background-color: #fffde7;
+    }
+    .btn {
+      padding: 8px 14px;
+      background-color: #d84315;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 5px;
+    }
+    .btn:hover {
+      background-color: #bf360c;
+    }
+    form, .order-summary {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #fff3e0;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .order-summary ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .order-summary li {
+      padding: 5px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffb300;
+      color: white;
+      margin-top: 40px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      animation: fadeInZoom 0.5s ease;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #999;
+    }
+    .close:hover {
+      color: #333;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInZoom {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>☕ Cà Phê Mộc - Hương vị Mộc Giữa Lòng Phố ☀️</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Trang Chủ</a>
+    <a href="about.html">Giới Thiệu</a>
+    <a href="contact.html">Liên Hệ</a>
+  </nav>
+
+  <main>
+    <img class="banner" src="https://chiasefilethietke.com/uploads/202405/chiasefilethietkecom-011902.jpg" alt="Banner quán cà phê">
+    <h2>Không gian thưởng thức cà phê tuyệt vời</h2>
+    <img class="coffee-img" src="https://blog.premierresidencesphuquoc.com/wp-content/uploads/2024/11/quan-cafe-phu-quoc-12.webp" alt="Cà phê thơm ngon">
+
+    <h3>☕ Menu Đồ Uống</h3>
+    <table>
+      <tr><th>Tên</th><th>Giá</th><th>Mô tả</th><th>Hành động</th></tr>
+      <tr>
+        <td>Cà phê đen</td><td>30.000</td><td>Đậm đà, nguyên chất 100%, pha phin truyền thống.</td>
+        <td>
+          <button class="btn" onclick="orderItem('Cà phê đen', 30000)">Đặt món</button>
+          <button class="btn" onclick="showModal('Cà phê đen', 'Pha phin truyền thống, hương vị đậm đà.')">Xem</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Cà phê sữa</td><td>35.000</td><td>Sữa đặc ông Thọ thơm béo, vị ngọt hài hoà.</td>
+        <td>
+          <button class="btn" onclick="orderItem('Cà phê sữa', 35000)">Đặt món</button>
+          <button class="btn" onclick="showModal('Cà phê sữa', 'Ngon ngọt, dễ uống cho mọi đối tượng.')">Xem</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Trà đào cam sả</td><td>40.000</td><td>Hương vị thanh mát, giải nhiệt mùa hè.</td>
+        <td>
+          <button class="btn" onclick="orderItem('Trà đào cam sả', 40000)">Đặt món</button>
+          <button class="btn" onclick="showModal('Trà đào cam sả', 'Đào ngọt, cam chua nhẹ, sả thơm mát.')">Xem</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Latte nghệ thuật</td><td>45.000</td><td>Bọt sữa mịn, tạo hình latte art bắt mắt.</td>
+        <td>
+          <button class="btn" onclick="orderItem('Latte nghệ thuật', 45000)">Đặt món</button>
+          <button class="btn" onclick="showModal('Latte nghệ thuật', 'Sự hòa quyện giữa nghệ thuật và cà phê.')">Xem</button>
+        </td>
+      </tr>
+    </table>
+
+    <h3>🪑 Đặt Bàn Online</h3>
+    <form onsubmit="submitBooking(event)">
+      <label>Ngày:</label>
+      <input type="date" id="date" required>
+      <label>Giờ:</label>
+      <input type="time" id="time" required>
+      <label>Số người:</label>
+      <input type="number" id="people" min="1" max="20" required>
+      <button class="btn" type="submit">Đặt bàn</button>
+    </form>
+
+    <h3>🧾 Đơn Hàng Của Bạn</h3>
+    <div class="order-summary">
+      <ul id="orderList"><li>Chưa có món nào được đặt.</li></ul>
+      <p><strong>Tổng tiền:</strong> <span id="totalAmount">0</span> đ</p>
+      <button class="btn" onclick="checkout()">Thanh toán</button>
+    </div>
+  </main>
+
+  <footer>© 2025 Cà Phê Mộc. Đậm đà hương vị Việt.</footer>
+
+  <!-- Modal Thông Tin -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h4 id="modalTitle"></h4>
+      <p id="modalContent"></p>
+    </div>
+  </div>
+
+  <script>
+    let orderItems = [];
+    let total = 0;
+
+    function orderItem(name, price) {
+      const existing = orderItems.find(item => item.name === name);
+      if (existing) existing.qty += 1;
+      else orderItems.push({ name, price, qty: 1 });
+      updateOrderList();
+    }
+
+    function updateOrderList() {
+      const list = document.getElementById('orderList');
+      list.innerHTML = '';
+      if (orderItems.length === 0) {
+        list.innerHTML = '<li>Chưa có món nào được đặt.</li>';
+        document.getElementById('totalAmount').textContent = '0';
+        return;
+      }
+      total = 0;
+      orderItems.forEach((item, i) => {
+        total += item.price * item.qty;
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${item.name} - ${item.price.toLocaleString()}đ x ${item.qty}
+          <button onclick="increaseQty(${i})">➕</button>
+          <button onclick="decreaseQty(${i})">➖</button>
+          <button onclick="removeItem(${i})">🗑️</button>
+        `;
+        list.appendChild(li);
+      });
+      document.getElementById('totalAmount').textContent = total.toLocaleString();
+    }
+
+    function increaseQty(i) { orderItems[i].qty += 1; updateOrderList(); }
+    function decreaseQty(i) {
+      if (orderItems[i].qty > 1) orderItems[i].qty -= 1;
+      else removeItem(i);
+      updateOrderList();
+    }
+    function removeItem(i) {
+      orderItems.splice(i, 1);
+      updateOrderList();
+    }
+
+    function checkout() {
+      if (orderItems.length === 0) {
+        alert("Bạn chưa đặt món nào.");
+      } else {
+        const summary = orderItems.map(i => `${i.name} x${i.qty}`).join('\n');
+        alert(`✅ Cảm ơn bạn đã thanh toán!\n\n${summary}\nTổng tiền: ${total.toLocaleString()} đ.`);
+        orderItems = [];
+        total = 0;
+        updateOrderList();
+      }
+    }
+
+    function submitBooking(e) {
+      e.preventDefault();
+      const d = document.getElementById('date').value;
+      const t = document.getElementById('time').value;
+      const p = document.getElementById('people').value;
+      alert(`🪑 Đặt bàn thành công!\n📅 ${d} 🕐 ${t} 👥 ${p} người`);
+      e.target.reset();
+    }
+
+    function showModal(title, content) {
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalContent").textContent = content;
+      document.getElementById("infoModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("infoModal").style.display = "none";
+    }
+    window.onclick = function(e) {
+      if (e.target === document.getElementById("infoModal")) closeModal();
+    }
+  </script>
+</body>
+</html>

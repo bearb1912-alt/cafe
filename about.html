@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Giới Thiệu - Cà Phê Mộc</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(to bottom, #fff8e1, #ffe0b2);
+      color: #4e342e;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #d84315;
+      padding: 30px 20px;
+      color: white;
+      text-align: center;
+      animation: fadeInDown 1s ease;
+    }
+
+    nav {
+      background-color: #ffb300;
+      text-align: center;
+      padding: 15px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #4e342e;
+    }
+
+    main {
+      padding: 40px 30px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #bf360c;
+      margin-bottom: 15px;
+      text-align: center;
+      animation: popIn 1.2s ease;
+    }
+
+    .info-block {
+      background-color: #fff3e0;
+      border-radius: 10px;
+      padding: 25px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      animation: fadeIn 1.5s ease;
+    }
+
+    .info-block p {
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .highlight {
+      color: #e64a19;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: zoomIn 1s ease-in-out;
+      transition: transform 0.5s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    video {
+      display: block;
+      margin: 30px auto;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+      animation: fadeIn 1.5s ease;
+      transition: transform 0.6s ease;
+    }
+    video:hover {
+      transform: scale(1.05);
+    }
+
+    /* Nút bật/tắt nhạc */
+    #musicControl {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #d84315;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+    #musicControl:hover {
+      background-color: #bf360c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffb300;
+      color: white;
+      margin-top: 40px;
+    }
+
+    /* Animation keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gallery img {
+        width: 90%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎉 Giới Thiệu Về Cà Phê Mộc 🎉</h1>
+  </header>
+
+  <nav>
+    <a href="main.html">Trang Chủ</a>
+    <a href="about.html">Giới Thiệu</a>
+    <a href="contact.html">Liên Hệ</a>
+  </nav>
+
+  <!-- Nút bật/tắt nhạc -->
+  <button id="musicControl">Tắt Nhạc</button>
+
+  <!-- Nhạc nền -->
+  <audio id="backgroundMusic" autoplay loop>
+    <source src="media/piano.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ nhạc nền.
+  </audio>
+
+  <main>
+    <section>
+      <h2>Lịch sử & Tầm Nhìn</h2>
+      <div class="info-block">
+        <p><span class="highlight">Cà Phê Mộc</span> ra đời vào năm 2015 tại một góc nhỏ giữa lòng thành phố, mang theo sứ mệnh giữ gìn hương vị mộc mạc của cà phê Việt truyền thống.</p>
+        <p>Với phương châm <span class="highlight">"Giữ vị mộc - sống thật chậm"</span>, chúng tôi mong muốn tạo nên một không gian thư giãn, yên tĩnh, nơi bạn có thể thưởng thức cà phê và thả hồn vào giai điệu cuộc sống.</p>
+        <p>Chúng tôi sử dụng nguyên liệu <span class="highlight">100% hạt cà phê nguyên chất</span> từ vùng đất Tây Nguyên, kết hợp cùng phong cách pha truyền thống để giữ được hương vị thuần khiết.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Không Gian Quán</h2>
+      <div class="gallery">
+        <img src="https://20sfvn.com/wp-content/uploads/2022/11/khong-gian-quan-cafe-dep.jpeg" alt="Không gian quán 1" />
+        <img src="https://dkdecor.vn/wp-content/uploads/2023/05/mau-quan-cafe-moc-8.jpg" />
+        <img src="https://standboothvietnam.com/wp-content/uploads/2023/11/quan-ca-pje.jpg" alt="Không gian quán 3" />
+      </div>
+    </section>
+
+    <section>
+      <h2>Video Giới Thiệu</h2>
+      <video controls>
+        <source src="C:\Users\pc\Downloads\112893-696273049_small.mp4" type="video/mp4" />
+        Trình duyệt của bạn không hỗ trợ video.
+      </video>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Cà Phê Mộc. Nơi lưu giữ hương vị truyền thống.
+  </footer>
+
+  <script>
+    const music = document.getElementById('backgroundMusic');
+    const musicControlBtn = document.getElementById('musicControl');
+
+    musicControlBtn.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        musicControlBtn.textContent = 'Tắt Nhạc';
+      } else {
+        music.pause();
+        musicControlBtn.textContent = 'Bật Nhạc';
+      }
+    });
+  </script>
+</body>
+</html>
