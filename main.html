@@ -11,22 +11,37 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: linear-gradient(to bottom, #fff3e0, #ffe0b2);
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
       color: #4e342e;
       overflow-x: hidden;
+      animation: bgFlow 15s infinite alternate ease-in-out;
     }
+
+    /* Header Vip */
     header {
-      background-color: #d84315;
-      padding: 30px 20px;
+      background: linear-gradient(90deg, #d84315, #ff7043, #d84315);
+      background-size: 300% 300%;
+      padding: 40px 20px;
       color: white;
       text-align: center;
-      animation: slideDown 1s ease-out;
+      animation: gradientFlow 6s infinite linear, slideDown 1s ease-out;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
+    header h1 {
+      font-size: 32px;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      animation: glow 2s infinite alternate ease-in-out;
+    }
+
     nav {
-      background-color: #ffb300;
+      background: linear-gradient(90deg, #ffb300, #ffcc80);
       text-align: center;
       padding: 15px 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: fadeIn 1.5s ease;
     }
     nav a {
       color: white;
@@ -34,43 +49,64 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 18px;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 3px;
+      background: #4e342e;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: right;
     }
     nav a:hover {
       color: #4e342e;
     }
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
     main {
       padding: 30px 20px;
-      animation: fadeIn 1.5s ease;
+      animation: fadeInUp 1.5s ease;
     }
     .banner {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      animation: fadeInZoom 1s ease;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: fadeInZoom 1.5s ease, floatSlow 10s infinite alternate ease-in-out;
     }
     h2, h3 {
-      margin-top: 30px;
-      font-size: 28px;
+      margin-top: 40px;
+      font-size: 30px;
       color: #bf360c;
       text-align: center;
-      animation: fadeInUp 1.2s ease;
+      animation: textWave 3s infinite alternate ease-in-out;
     }
     .coffee-img {
       display: block;
-      max-width: 400px;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      animation: float 4s infinite ease-in-out;
+      max-width: 420px;
+      margin: 30px auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      animation: float 4s infinite ease-in-out, glowImg 3s infinite alternate;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 15px;
+      margin-top: 20px;
       background-color: #fff8e1;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      animation: fadeInZoom 1.2s ease;
     }
     th, td {
       padding: 15px;
@@ -78,7 +114,7 @@
       border-bottom: 1px solid #ffe0b2;
     }
     th {
-      background-color: #ff8f00;
+      background: linear-gradient(90deg, #ff8f00, #ffb74d);
       color: white;
     }
     td {
@@ -86,46 +122,64 @@
     }
     .btn {
       padding: 8px 14px;
-      background-color: #d84315;
+      background: linear-gradient(90deg, #d84315, #ff7043);
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 14px;
       margin-right: 5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .btn:hover {
-      background-color: #bf360c;
+      background: linear-gradient(90deg, #bf360c, #e64a19);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
+
     form, .order-summary {
-      max-width: 600px;
-      margin: 30px auto;
-      background: #fff3e0;
-      padding: 20px;
-      border-radius: 10px;
+      max-width: 650px;
+      margin: 40px auto;
+      background: rgba(255,243,224,0.95);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease;
     }
     form input, form select {
       width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      margin-bottom: 15px;
-      border-radius: 5px;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 18px;
+      border-radius: 8px;
       border: 1px solid #ccc;
+      transition: all 0.3s ease;
     }
+    form input:focus {
+      border-color: #ff8f00;
+      box-shadow: 0 0 6px rgba(255,143,0,0.6);
+      outline: none;
+    }
+
     .order-summary ul {
       list-style: none;
       padding-left: 0;
     }
     .order-summary li {
-      padding: 5px 0;
+      padding: 8px 0;
+      animation: fadeInUp 0.8s ease;
     }
+
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #ffb300;
+      padding: 25px;
+      background: linear-gradient(90deg, #ffb300, #ffcc80);
       color: white;
-      margin-top: 40px;
+      margin-top: 50px;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
     }
+
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -133,33 +187,53 @@
       left: 0; top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0,0,0,0.7);
       justify-content: center;
       align-items: center;
+      backdrop-filter: blur(4px);
     }
     .modal-content {
       background-color: white;
-      padding: 30px;
-      border-radius: 10px;
+      padding: 35px;
+      border-radius: 15px;
       width: 80%;
       max-width: 500px;
       text-align: center;
-      animation: fadeInZoom 0.5s ease;
+      animation: fadeInZoom 0.6s ease;
       position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
     .close {
       position: absolute;
       top: 10px;
       right: 15px;
-      font-size: 20px;
+      font-size: 22px;
       cursor: pointer;
       color: #999;
+      transition: color 0.3s ease;
     }
     .close:hover {
-      color: #333;
+      color: #d84315;
     }
+
+    /* Hiệu ứng hạt rơi */
+    .falling {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: fall linear forwards;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.9;
+    }
+    @keyframes fall {
+      from { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Keyframes Vip */
     @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
+      from { transform: translateY(-60px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
     @keyframes fadeIn {
@@ -167,16 +241,41 @@
       to { opacity: 1; }
     }
     @keyframes fadeInZoom {
-      from { transform: scale(0.9); opacity: 0; }
+      from { transform: scale(0.8); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
     @keyframes fadeInUp {
-      from { transform: translateY(40px); opacity: 0; }
+      from { transform: translateY(50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes floatSlow {
+      0% { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.03) translateY(-10px); }
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #ffcc80, 0 0 16px #ff7043; }
+      to { text-shadow: 0 0 16px #fff3e0, 0 0 28px #ffb300; }
+    }
+    @keyframes glowImg {
+      from { box-shadow: 0 6px 15px rgba(255,140,0,0.4); }
+      to { box-shadow: 0 12px 25px rgba(255,87,34,0.7); }
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    @keyframes bgFlow {
+      0% { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+      100% { background: linear-gradient(135deg, #ffe0b2, #fff3e0); }
+    }
+    @keyframes textWave {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); color: #ff5722; }
+      100% { transform: translateY(0); }
     }
   </style>
 </head>
@@ -333,10 +432,20 @@
     function closeModal() {
       document.getElementById("infoModal").style.display = "none";
     }
-    window.onclick = function(e) {
-      if (e.target === document.getElementById("infoModal")) closeModal();
+
+    // Hiệu ứng hạt cà phê và mặt trời
+    function createFallingEmoji() {
+      const emoji = Math.random() > 0.7 ? "☀️" : "☕";
+      const span = document.createElement("span");
+      span.classList.add("falling");
+      span.textContent = emoji;
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.fontSize = (Math.random() * 16 + 20) + "px";
+      span.style.animationDuration = (Math.random() * 3 + 4) + "s";
+      document.body.appendChild(span);
+      setTimeout(() => span.remove(), 7000);
     }
+    setInterval(createFallingEmoji, 800);
   </script>
 </body>
-
 </html>
