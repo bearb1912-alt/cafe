@@ -12,9 +12,13 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: linear-gradient(to bottom, #fff8e1, #ffe082);
+      background: linear-gradient(120deg, #fff8e1, #ffe082, #ffcc80, #ffe0b2);
+      background-size: 400% 400%;
       color: #4e342e;
       overflow-x: hidden;
+      animation: gradientBG 15s ease infinite;
+      scroll-behavior: smooth;
+      position: relative;
     }
 
     header {
@@ -22,7 +26,15 @@
       padding: 30px 20px;
       color: white;
       text-align: center;
-      animation: slideDown 1s ease;
+      animation: slideDown 1.2s ease, glow 2s ease-in-out infinite alternate;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* bỏ typing animation */
+    header h1 {
+      display: inline-block;
+      white-space: nowrap;
     }
 
     nav {
@@ -30,6 +42,10 @@
       text-align: center;
       padding: 15px 0;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     nav a {
@@ -38,16 +54,19 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 18px;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      display: inline-block;
     }
 
     nav a:hover {
       color: #4e342e;
+      transform: scale(1.2) rotate(-3deg);
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
     }
 
     main {
       padding: 40px 30px;
-      animation: fadeInUp 1.2s ease;
+      animation: fadeInUp 1.5s ease;
     }
 
     h2 {
@@ -55,7 +74,43 @@
       color: #bf360c;
       margin-bottom: 20px;
       text-align: center;
+      position: relative;
+      display: inline-block;
       animation: zoomIn 1s ease;
+    }
+
+    /* Underline animation */
+    h2::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 4px;
+      margin: 8px auto 0;
+      background: linear-gradient(90deg, #d84315, #ff9800, #ff5722);
+      border-radius: 2px;
+      animation: underline 1.2s forwards;
+    }
+
+    h2:hover::after {
+      background: linear-gradient(270deg, #ff7043, #ffb300, #d84315);
+      background-size: 200% 100%;
+      animation: underlineHover 2s linear infinite;
+    }
+
+    .contact-info,
+    .form-container,
+    iframe {
+      opacity: 0;
+      transform: translateY(40px) rotateX(15deg);
+      transition: all 1.3s cubic-bezier(.19,1,.22,1);
+      text-align: center;
+    }
+
+    .contact-info.show,
+    .form-container.show,
+    iframe.show {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
     }
 
     .contact-info {
@@ -63,21 +118,14 @@
       border-radius: 12px;
       padding: 25px;
       margin-bottom: 40px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      animation: fadeIn 1.4s ease;
-    }
-
-    .contact-info p {
-      margin: 10px 0;
-      line-height: 1.6;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
     }
 
     .form-container {
       background-color: #fff8e1;
       border-radius: 12px;
       padding: 25px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      animation: slideUp 1.5s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
 
     form label {
@@ -94,22 +142,32 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 16px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 12px rgba(216,67,21,0.7);
     }
 
     form button {
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 12px 25px;
       background-color: #d84315;
       color: white;
       border: none;
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
+      animation: neonPulse 2.5s infinite alternate;
     }
 
     form button:hover {
       background-color: #bf360c;
+      transform: scale(1.15) rotate(2deg);
+      box-shadow: 0 0 20px rgba(255, 100, 50, 1);
     }
 
     iframe {
@@ -118,8 +176,7 @@
       border: 0;
       margin-top: 40px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-      animation: fadeIn 1.7s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
 
     footer {
@@ -128,33 +185,40 @@
       background-color: #ffb300;
       color: white;
       margin-top: 50px;
+      animation: fadeInUp 1.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: "☕";
+      position: absolute;
+      left: 10px;
+      animation: spin 8s linear infinite;
+    }
+
+    /* Coffee beans falling */
+    .coffee-bean {
+      position: fixed;
+      top: -50px;
+      font-size: 22px;
+      animation: fall linear infinite;
+      opacity: 0.9;
+      z-index: 0;
     }
 
     /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes slideDown { from { transform: translateY(-60px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes glow { from { text-shadow: 0 0 6px rgba(255,255,255,0.5); } to { text-shadow: 0 0 15px rgba(255,255,255,1); } }
+    @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes neonPulse { from { box-shadow: 0 0 8px #ff7043; } to { box-shadow: 0 0 20px #ff3d00; } }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes fall { 0% { transform: translateY(-50px) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
+    @keyframes underline { from { width: 0; } to { width: 80%; } }
+    @keyframes underlineHover { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
   </style>
 </head>
 <body>
@@ -207,7 +271,34 @@
   <footer>
     © 2025 Cà Phê Mộc. Kết nối yêu thương qua từng giọt cà phê.
   </footer>
+
+  <script>
+    // Scroll reveal animation
+    const sections = document.querySelectorAll('.contact-info, .form-container, iframe');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < triggerBottom) {
+          sec.classList.add('show');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Coffee beans falling
+    function createBean() {
+      const bean = document.createElement('div');
+      bean.classList.add('coffee-bean');
+      bean.innerHTML = '☕';
+      bean.style.left = Math.random() * window.innerWidth + 'px';
+      bean.style.fontSize = (16 + Math.random() * 20) + 'px';
+      bean.style.animationDuration = (4 + Math.random() * 6) + 's';
+      document.body.appendChild(bean);
+      setTimeout(() => bean.remove(), 10000);
+    }
+    setInterval(createBean, 800);
+  </script>
 </body>
-
 </html>
-
