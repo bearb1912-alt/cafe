@@ -4,190 +4,136 @@
   <meta charset="UTF-8">
   <title>Giới Thiệu - Cà Phê Mộc</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: linear-gradient(to bottom, #fff8e1, #ffe0b2);
+      background: linear-gradient(-45deg, #fff8e1, #ffe0b2, #ffe082, #ffcc80);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
       color: #4e342e;
       overflow-x: hidden;
+      position: relative;
     }
-
+    #coffeeCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    header, nav, main, footer, #musicControl { position: relative; z-index: 2; }
     header {
-      background-color: #d84315;
-      padding: 30px 20px;
-      color: white;
-      text-align: center;
-      animation: fadeInDown 1s ease;
+      background: linear-gradient(90deg, #d84315, #ff7043, #d84315);
+      background-size: 200% 200%;
+      animation: headerGlow 6s ease infinite;
+      padding: 40px 20px;
+      color: white; text-align: center;
     }
-
+    header h1 {
+      font-size: 42px;
+      background: linear-gradient(to right, #fff8e1, #ffd54f, #ffb300);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1.2s ease;
+      text-shadow: 0 0 15px rgba(255,255,255,0.5);
+    }
     nav {
-      background-color: #ffb300;
-      text-align: center;
-      padding: 15px 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      background-color: #ffb300; text-align: center;
+      padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      position: sticky; top: 0; z-index: 100;
     }
-
     nav a {
-      color: white;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
-      transition: color 0.3s ease;
+      color: white; margin: 0 25px; text-decoration: none;
+      font-weight: bold; font-size: 18px; position: relative;
     }
-
-    nav a:hover {
-      color: #4e342e;
+    nav a::after {
+      content: ""; position: absolute; width: 0; height: 3px;
+      bottom: -5px; left: 50%; background-color: #4e342e;
+      transition: all 0.4s ease;
     }
-
-    main {
-      padding: 40px 30px;
-      animation: fadeInUp 1.5s ease;
-    }
-
+    nav a:hover::after { width: 100%; left: 0; }
+    main { padding: 50px 30px; }
     section {
-      margin-bottom: 40px;
+      margin-bottom: 60px; opacity: 0; transform: translateY(50px);
+      transition: all 1.2s ease;
     }
-
+    section.show { opacity: 1; transform: translateY(0); }
     h2 {
-      font-size: 32px;
-      color: #bf360c;
-      margin-bottom: 15px;
-      text-align: center;
-      animation: popIn 1.2s ease;
+      font-size: 36px; color: #bf360c; margin-bottom: 20px;
+      text-align: center; animation: popIn 1.2s ease;
     }
-
     .info-block {
-      background-color: #fff3e0;
-      border-radius: 10px;
-      padding: 25px;
-      margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      animation: fadeIn 1.5s ease;
+      background: rgba(255,243,224,0.95);
+      border-radius: 16px; padding: 30px; margin-top: 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2); backdrop-filter: blur(6px);
     }
-
-    .info-block p {
-      line-height: 1.7;
-      margin-bottom: 15px;
-    }
-
-    .highlight {
-      color: #e64a19;
-      font-weight: bold;
-    }
-
+    .info-block p { line-height: 1.8; margin-bottom: 15px; font-size: 18px; }
+    .highlight { color: #e64a19; font-weight: bold; }
     .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 30px;
+      display: flex; flex-wrap: wrap; gap: 25px;
+      justify-content: center; margin-top: 40px;
     }
-
     .gallery img {
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: zoomIn 1s ease-in-out;
-      transition: transform 0.5s ease;
+      width: 320px; height: 220px; object-fit: cover;
+      border-radius: 16px; box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
     }
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1) rotate3d(1,1,0,8deg);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
     }
-
     video {
-      display: block;
-      margin: 30px auto;
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-      animation: fadeIn 1.5s ease;
+      display: block; margin: 40px auto; max-width: 80%;
+      border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.35);
       transition: transform 0.6s ease;
     }
-    video:hover {
-      transform: scale(1.05);
-    }
-
-    /* Nút bật/tắt nhạc */
+    video:hover { transform: scale(1.05); }
     #musicControl {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #d84315;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
-      z-index: 1000;
+      position: fixed; top: 20px; right: 20px;
+      background: linear-gradient(90deg,#d84315,#ff7043);
+      color: white; border: none; padding: 12px 18px;
+      font-size: 16px; border-radius: 30px; cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite; z-index: 1000;
     }
-    #musicControl:hover {
-      background-color: #bf360c;
-    }
-
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #ffb300;
-      color: white;
-      margin-top: 40px;
+      text-align: center; padding: 25px;
+      background-color: #ffb300; color: white; margin-top: 50px;
+      font-size: 18px; letter-spacing: 1px;
+      box-shadow: 0 -3px 12px rgba(0,0,0,0.25);
     }
-
-    /* Animation keyframes */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes headerGlow {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
-
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-40px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
     @keyframes popIn {
       0% { transform: scale(0.8); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
-
-    /* Responsive */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(216,67,21,0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(216,67,21,0); }
+      100% { box-shadow: 0 0 0 0 rgba(216,67,21,0); }
+    }
     @media (max-width: 768px) {
-      .gallery {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .gallery img {
-        width: 90%;
-        height: auto;
-      }
+      .gallery { flex-direction: column; align-items: center; }
+      .gallery img { width: 90%; height: auto; }
     }
   </style>
 </head>
 <body>
+  <canvas id="coffeeCanvas"></canvas>
 
-  <header>
-    <h1>🎉 Giới Thiệu Về Cà Phê Mộc 🎉</h1>
-  </header>
+  <header><h1>🎉 Giới Thiệu Về Cà Phê Mộc 🎉</h1></header>
 
   <nav>
     <a href="main.html">Trang Chủ</a>
@@ -195,12 +141,9 @@
     <a href="contact.html">Liên Hệ</a>
   </nav>
 
-  <!-- Nút bật/tắt nhạc -->
   <button id="musicControl">Tắt Nhạc</button>
-
-  <!-- Nhạc nền -->
   <audio id="backgroundMusic" autoplay loop>
-    <source src="https://rr5---sn-oj5hn5-55.googlevideo.com/videoplayback?expire=1757011542&ei=9Ym5aLSJO-rZ6dsPkvKUwAM&ip=37.160.170.216&id=o-AFpKR95dcGEwY2CjhxpcwjXC53C4Aphwwhb78l9Sxlxb&itag=140&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AY1jyLNSQ1P0c2utizkfRTmB2w6Nft2F316aNkNlfqL9zkRlYXjgISNeW2Bg6-ZA-witZP3qMYxVoVki&vprv=1&svpuc=1&mime=audio%2Fmp4&ns=6EuPKjZqdDRiQnWkLqYAgSkQ&rqh=1&gir=yes&clen=3569729&dur=220.519&lmt=1746577027218412&keepalive=yes&lmw=1&fexp=24350590,24350737,24350827,24351316,24351318,24351528,24352539,24352559,24352568,24352573,24352580,24352582,24352697,24352699,24352882,24352884,24352960,24352985,24352987,24353151,24353159,24353168,24353170,51557447,51565115,51565682,51580970&c=TVHTML5&sefc=1&txp=5318224&n=27lQ8APD9tdBJg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRgIhAPOERx_dxahe_W_Kgr5PQjFeML4gVRjZxNFa8gdmM0vSAiEA3MVgwnATHMkKXdFOXJ3C-qbQYZMdhcis8uZnu2hzmQw%3D&title=Ti%E1%BB%87c+tr%C3%A0+sao+%7C+Nh%E1%BA%A1c+Trung+%7C+TikTok+Piano+cover&redirect_counter=1&cm2rm=sn-4g5ezd7z&rrc=80&req_id=97321e1d87ea3ee&cms_redirect=yes&cmsv=e&met=1756989955,&mh=ih&mip=2405:4802:80b4:6980:dc39:4ed6:9583:a6e9&mm=34&mn=sn-oj5hn5-55&ms=ltu&mt=1756988434&mv=D&mvi=5&pl=0&rms=ltu,au&lsparams=met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRQIhAOVqr-6lk5HsSrO6ZzKCE3rk3Rb1O0TGBncl-Rg1zpwKAiBV5iFFR-p0pgX233GFmjdiWqBX2enoTiL7Ok8FjFf5SA%3D%3D" type="audio/mpeg">
+    <source src="your-music.mp3" type="audio/mpeg">
   </audio>
 
   <main>
@@ -212,16 +155,14 @@
         <p>Chúng tôi sử dụng nguyên liệu <span class="highlight">100% hạt cà phê nguyên chất</span> từ vùng đất Tây Nguyên, kết hợp cùng phong cách pha truyền thống để giữ được hương vị thuần khiết.</p>
       </div>
     </section>
-
     <section>
       <h2>Không Gian Quán</h2>
       <div class="gallery">
-        <img src="https://20sfvn.com/wp-content/uploads/2022/11/khong-gian-quan-cafe-dep.jpeg" alt="Không gian quán 1" />
+        <img src="https://20sfvn.com/wp-content/uploads/2022/11/khong-gian-quan-cafe-dep.jpeg" />
         <img src="https://dkdecor.vn/wp-content/uploads/2023/05/mau-quan-cafe-moc-8.jpg" />
-        <img src="https://standboothvietnam.com/wp-content/uploads/2023/11/quan-ca-pje.jpg" alt="Không gian quán 3" />
+        <img src="https://standboothvietnam.com/wp-content/uploads/2023/11/quan-ca-pje.jpg" />
       </div>
     </section>
-
     <section>
       <h2>Video Giới Thiệu</h2>
       <video controls>
@@ -230,31 +171,100 @@
     </section>
   </main>
 
-  <footer>
-    © 2025 Cà Phê Mộc. Nơi lưu giữ hương vị truyền thống.
-  </footer>
+  <footer>© 2025 Cà Phê Mộc. Nơi lưu giữ hương vị truyền thống.</footer>
 
   <script>
     const music = document.getElementById('backgroundMusic');
     const musicControlBtn = document.getElementById('musicControl');
-
     musicControlBtn.addEventListener('click', () => {
-      if (music.paused) {
-        music.play();
-        musicControlBtn.textContent = 'Tắt Nhạc';
-      } else {
-        music.pause();
-        musicControlBtn.textContent = 'Bật Nhạc';
+      if (music.paused) { music.play(); musicControlBtn.textContent = 'Tắt Nhạc'; }
+      else { music.pause(); musicControlBtn.textContent = 'Bật Nhạc'; }
+    });
+
+    // Scroll animation
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) sec.classList.add("show");
+      });
+    });
+
+    // Canvas hiệu ứng rơi ☕ và ☀️
+    const canvas = document.getElementById("coffeeCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Particle {
+      constructor(x, y, icon, baseSpeed, size) {
+        this.x = x;
+        this.y = y;
+        this.icon = icon;
+        this.baseSpeed = baseSpeed;
+        this.size = size;
+        this.angle = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.05;
+        this.frequency = Math.random() * 0.02 + 0.01;
+        this.time = Math.random() * 100;
+        this.opacity = 0; // bắt đầu trong suốt (fade in)
       }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.globalAlpha = this.opacity;
+        ctx.font = `${this.size}px Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(this.icon, 0, 0);
+        ctx.restore();
+      }
+      update() {
+        this.time += 0.02;
+        let variableSpeed = this.baseSpeed + Math.sin(this.time) * 1.5;
+        this.y += variableSpeed;
+        this.angle += this.rotationSpeed;
+        this.x += Math.sin(this.y * this.frequency) * 0.6;
+
+        // opacity thay đổi: fade in lúc mới rơi, fade out khi gần đáy
+        if (this.y < canvas.height / 2) {
+          this.opacity = Math.min(1, this.opacity + 0.01);
+        } else {
+          this.opacity = Math.max(0, this.opacity - 0.008);
+        }
+
+        if (this.y > canvas.height + 50) {
+          this.y = -20;
+          this.x = Math.random() * canvas.width;
+          this.opacity = 0; // reset về trong suốt
+          this.time = Math.random() * 100;
+        }
+        this.draw();
+      }
+    }
+
+    let particles = [];
+    for (let i = 0; i < 60; i++) {
+      let x = Math.random() * canvas.width;
+      let y = Math.random() * canvas.height;
+      let speed = Math.random() * 2 + 1;
+      let size = Math.random() * 22 + 16;
+      let icon = i % 10 === 0 ? "☀️" : "☕";
+      particles.push(new Particle(x, y, icon, speed, size));
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => p.update());
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     });
   </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
