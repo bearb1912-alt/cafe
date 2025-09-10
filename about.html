@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Giới Thiệu - Cà Phê Thiên Sứ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Swash&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Cherry Swash',cursive;
+  background: linear-gradient(to bottom, #fce4ec,#e0f7fa);
+  color:#5a4e4e;
+  overflow-x:hidden;
+  position:relative;
+  min-height:100vh;
+}
+
+/* Header */
+header{
+  background: linear-gradient(135deg,#ffccd5,#cce7ff);
+  padding:50px 20px;
+  text-align:center;
+  color:#fff;
+  font-size:30px;
+  text-shadow:1px 1px 6px #ffe0f0;
+  border-radius:0 0 30px 30px;
+  box-shadow:0 5px 15px rgba(255,182,193,0.3);
+  position:relative;
+  z-index:2;
+  overflow:hidden;
+  animation:fadeInDown 1s ease;
+}
+
+/* Nav */
+nav{
+  text-align:center;
+  padding:15px 0;
+  background-color: rgba(255,204,221,0.6);
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  border-radius:0 0 20px 20px;
+}
+nav a{
+  margin:0 20px;
+  color:#fff;
+  font-weight:bold;
+  text-decoration:none;
+  font-size:18px;
+  transition:0.3s;
+}
+nav a:hover{
+  color:#ff77a9;
+  transform:scale(1.1);
+}
+
+/* Main content */
+main{
+  padding:30px 20px;
+}
+
+/* Section titles */
+h2{
+  text-align:center;
+  color:#ff77a9;
+  margin-bottom:20px;
+  animation:fadeInUp 1.2s ease;
+}
+
+/* Info block */
+.info-block{
+  background-color: rgba(255,240,245,0.7);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:30px;
+  box-shadow:0 6px 15px rgba(255,182,193,0.2);
+  animation:fadeIn 1.5s ease;
+}
+.info-block p{
+  line-height:1.7;
+  margin-bottom:15px;
+}
+
+/* Highlight text */
+.highlight{
+  color:#ff77a9;
+  font-weight:bold;
+}
+
+/* Gallery */
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+  margin-top:20px;
+}
+.gallery img{
+  width:300px;
+  height:200px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 6px 20px rgba(255,182,193,0.2);
+  animation:float 4s infinite ease-in-out;
+  transition: transform 0.5s ease;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* Video */
+video{
+  display:block;
+  margin:30px auto;
+  max-width:100%;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(255,182,193,0.2);
+  animation:fadeIn 1.5s ease;
+  transition: transform 0.5s ease;
+}
+video:hover{
+  transform:scale(1.05);
+}
+
+/* Coffee card gallery */
+.coffee-card{
+  width:250px;
+  background: rgba(255,240,245,0.7);
+  border-radius:20px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 6px 15px rgba(255,182,193,0.2);
+  animation:fadeIn 1.5s ease;
+  margin-bottom:20px;
+}
+.coffee-card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:15px;
+  margin-bottom:10px;
+  transition: transform 0.5s ease;
+}
+.coffee-card img:hover{
+  transform:scale(1.05);
+}
+.coffee-card p{
+  margin-bottom:10px;
+  color:#5a4e4e;
+  font-weight:bold;
+}
+/* Nút Xem chi tiết */
+.coffee-card .btn {
+  background: linear-gradient(135deg, #ff77a9, #ffb6c1);
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.coffee-card .btn:hover {
+  background: linear-gradient(135deg, #ffb6c1, #ff1493);
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:20px;
+  background: linear-gradient(135deg,#ffccd5,#cce7ff);
+  color:white;
+  margin-top:40px;
+  border-radius:30px 30px 0 0;
+  font-family:'Sacramento',cursive;
+  letter-spacing:1px;
+  box-shadow:0 -5px 15px rgba(255,182,193,0.2);
+  position:relative;
+  z-index:2;
+}
+
+/* Nút bật/tắt nhạc */
+#musicControl {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff77a9;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  z-index:1000;
+}
+#musicControl:hover {
+  background-color:#ff1493;
+}
+
+/* Flower & Sparkle */
+.flower{
+  position:absolute;
+  width:15px;
+  height:15px;
+  background: url('https://emojigraph.org/media/softbank/cherry-blossom_1f338.png') no-repeat center/contain;
+  top:-20px;
+  animation:fall linear infinite;
+  opacity:0.8;
+}
+.sparkle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle infinite;
+  opacity:0.6;
+}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);} }
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-40px);}to{opacity:1;transform:translateY(0);} }
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(120vh) rotate(360deg);} }
+@keyframes twinkle{0%,100%{opacity:0.3;transform:scale(1);}50%{opacity:1;transform:scale(1.5);} }
+</style>
+</head>
+<body>
+
+<header>
+  🌸 Giới Thiệu Cà Phê Thiên Sứ 🌸
+</header>
+
+<nav>
+  <a href="main.html">Trang Chủ</a>
+  <a href="about.html">Giới Thiệu</a>
+  <a href="contact.html">Liên Hệ</a>
+</nav>
+
+<!-- Nhạc nền -->
+<audio id="backgroundMusic" autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
+  Trình duyệt của bạn không hỗ trợ nhạc nền.
+</audio>
+<button id="musicControl">Tắt Nhạc</button>
+
+<main>
+  <section>
+    <h2>Lịch sử & Tầm Nhìn</h2>
+    <div class="info-block">
+      <p><span class="highlight">Cà Phê Thiên Sứ</span> ra đời với sứ mệnh mang không gian anime mơ mộng và dịu dàng đến từng khách hàng.</p>
+      <p>Phương châm của chúng tôi: <span class="highlight">"Ngọt ngào như thiên thần, thư giãn như trong anime"</span>.</p>
+      <p>Sử dụng nguyên liệu <span class="highlight">100% hạt cà phê nguyên chất</span>, kết hợp phong cách trang trí pastel anime và ánh sáng dịu nhẹ.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Không Gian Quán</h2>
+    <div class="gallery">
+      <img src="https://bao.click49.net/wp-content/uploads/2019/10/01-2.jpg" alt="Không gian quán 1">
+      <img src="https://bao.click49.net/wp-content/uploads/2019/10/02-3.jpg" alt="Không gian quán 2">
+      <img src="https://noithatkendesign.vn/storage/app/media/thiet-ke-quan-cafe-14.jpg" alt="Không gian quán 3">
+    </div>
+  </section>
+
+  <!-- Section cà phê nổi bật -->
+  <section>
+    <h2>Các Loại Cà Phê Nổi Bật</h2>
+    <div class="gallery">
+      <div class="coffee-card">
+        <img src="https://umbercoffee.vn/wp-content/uploads/2023/11/ca-phe-den-pha-phin-truyen-thong-viet-nam-700000-umber-coffee.jpg" alt="Cà phê phin truyền thống">
+        <p><strong>Cà phê phin truyền thống</strong> - 30.000 đ</p>
+        <button class="btn" onclick="showModal('Cà phê phin truyền thống','Cà phê có vị đậm đà, đắng và hương thơm đặc trưng, là sự kết hợp hoàn hảo.')">Xem chi tiết</button>
+      </div>
+      <div class="coffee-card">
+        <img src="https://cdn.sanity.io/images/t3ffnogl/production/6ce3c77e955f2683bba4b5c88ad3023c54bfa01b-3575x5363.jpg?w=1000&fm=webp" alt="Latte pastel">
+        <p><strong>Latte pastel</strong> - 35.000 đ</p>
+        <button class="btn" onclick="showModal('Latte pastel','Ngọt ngào, êm dịu cho tâm hồn.')">Xem chi tiết</button>
+      </div>
+      <div class="coffee-card">
+        <img src="https://myvietcoffee.com/wp-content/uploads/2022/01/tron-cafe-Moka.jpg" alt="Cà phê Moka">
+        <p><strong>Cà phê Moka</strong> - 40.000 đ</p>
+        <button class="btn" onclick="showModal('Cà phê Moka','Cà phê Moka nguyên chất có vị chua thanh xen lẫn vị đắng nhẹ và hậu vị ngọt, cùng với hương thơm phức tạp của hoa quả và chocolate.')">Xem chi tiết</button>
+      </div>
+      <div class="coffee-card">
+        <img src="https://image.phunuonline.com.vn/fckeditor/upload/2024/20240323/images/17-mon-trang-mieng-va-do-_91711171834.jpg" alt="Cappuccino hoa anh đào">
+        <p><strong>Cappuccino hoa anh đào</strong> - 38.000 đ</p>
+        <button class="btn" onclick="showModal('Cappuccino hoa anh đào','Hương hoa anh đào nhẹ nhàng, lớp bọt sữa mềm mại.')">Xem chi tiết</button>
+      </div>
+      <div class="coffee-card">
+        <img src="https://file.hstatic.net/1000220639/file/13_b442ce0bce394776bfb78f2ad12511d3_grande.jpg" alt="Espresso tinh tế">
+        <p><strong>Espresso tinh tế</strong> - 28.000 đ</p>
+        <button class="btn" onclick="showModal('Espresso tinh tế','Đậm đặc, năng lượng tràn đầy.')">Xem chi tiết</button>
+      </div>
+      <div class="coffee-card">
+        <img src="https://chefjob.vn/wp-content/uploads/2018/07/latte.jpg" alt="Café Latte nghệ thuật">
+        <p><strong>Café Latte nghệ thuật</strong> - 36.000 đ</p>
+        <button class="btn" onclick="showModal('Café Latte nghệ thuật','Sữa mịn hòa quyện cà phê, latte art đẹp mắt.')">Xem chi tiết</button>
+      </div>
+      <div class="coffee-card">
+        <img src="https://athome.starbucks.com/sites/default/files/styles/recipe_banner_xlarge/public/2024-05/CaramelMacchiato_RecipeHeader_848x539_%402x.jpg.webp?itok=jO6d0gba" alt="Caramel macchiato">
+        <p><strong>Caramel macchiato</strong> - 42.000 đ</p>
+        <button class="btn" onclick="showModal('Caramel macchiato','Vị caramel ngọt dịu kết hợp espresso.')">Xem chi tiết</button>
+      </div>
+      <div class="coffee-card">
+        <img src="https://cubes-asia.com/storage/contents/blog/cach-lam-ca-phe-hanh-nhan.jpg" alt="Cà phê sữa hạnh nhân">
+        <p><strong>Cà phê sữa hạnh nhân</strong> - 40.000 đ</p>
+        <button class="btn" onclick="showModal('Cà phê sữa hạnh nhân','Sữa hạnh nhân béo ngậy, cà phê thơm nồng.')">Xem chi tiết</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Video Giới Thiệu</h2>
+    <video controls>
+      <source src="https://cdn.pixabay.com/video/2022/04/04/112893-696273049_large.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+  </section>
+</main>
+
+<footer>
+  © 2025 Cà Phê Thiên Sứ 
+</footer>
+
+<!-- Modal cho cà phê -->
+<div id="coffeeModal" class="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:10000;">
+  <div class="modal-content" style="background:#fff;border-radius:15px;padding:20px;max-width:400px;width:90%;text-align:center;position:relative;">
+    <span class="close" onclick="closeModal()" style="position:absolute;top:10px;right:15px;font-size:25px;cursor:pointer;">&times;</span>
+    <h4 id="modalTitle"></h4>
+    <p id="modalContent"></p>
+  </div>
+</div>
+
+<script>
+// Music control
+const music = document.getElementById('backgroundMusic');
+const musicControlBtn = document.getElementById('musicControl');
+musicControlBtn.addEventListener('click', () => {
+  if(music.paused){
+    music.play();
+    musicControlBtn.textContent='Tắt Nhạc';
+  } else {
+    music.pause();
+    musicControlBtn.textContent='Bật Nhạc';
+  }
+});
+
+// Flower rơi
+for(let i=0;i<30;i++){
+  const flower=document.createElement('div');
+  flower.className='flower';
+  flower.style.left=Math.random()*100+'vw';
+  flower.style.animationDuration=(3+Math.random()*5)+'s';
+  flower.style.animationDelay=(Math.random()*5)+'s';
+  flower.style.transform='rotate('+Math.random()*360+'deg)';
+  document.body.appendChild(flower);
+}
+
+// Sparkle
+for(let i=0;i<20;i++){
+  const sparkle=document.createElement('div');
+  sparkle.className='sparkle';
+  sparkle.style.top=Math.random()*100+'vh';
+  sparkle.style.left=Math.random()*100+'vw';
+  sparkle.style.animationDuration=(2+Math.random()*3)+'s';
+  sparkle.style.animationDelay=(Math.random()*2)+'s';
+  document.body.appendChild(sparkle);
+}
+
+// Modal JS
+function showModal(title,content){ 
+  document.getElementById("modalTitle").textContent=title; 
+  document.getElementById("modalContent").textContent=content; 
+  document.getElementById("coffeeModal").style.display="flex";
+}
+function closeModal(){ 
+  document.getElementById("coffeeModal").style.display="none";
+}
+window.onclick=function(e){ 
+  if(e.target===document.getElementById("coffeeModal")) closeModal();
+}
+</script>
+
+</body>
+</html>

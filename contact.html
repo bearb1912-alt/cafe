@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Liên Hệ - Cà Phê Thiên Sứ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cherry+Swash&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Cherry Swash',cursive;
+  background: linear-gradient(to bottom, #fce4ec,#e0f7fa);
+  color:#5a4e4e;
+  overflow-x:hidden;
+  position:relative;
+  min-height:100vh;
+}
+
+/* Header */
+header{
+  background: linear-gradient(135deg,#ffccd5,#cce7ff);
+  padding:50px 20px;
+  text-align:center;
+  color:#fff;
+  font-size:30px;
+  text-shadow:1px 1px 6px #ffe0f0;
+  border-radius:0 0 30px 30px;
+  box-shadow:0 5px 15px rgba(255,182,193,0.3);
+  position:relative;
+  z-index:2;
+  overflow:hidden;
+  animation:fadeInDown 1s ease;
+}
+
+/* Nav */
+nav{
+  text-align:center;
+  padding:15px 0;
+  background-color: rgba(255,204,221,0.6);
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  border-radius:0 0 20px 20px;
+}
+nav a{
+  margin:0 20px;
+  color:#fff;
+  font-weight:bold;
+  text-decoration:none;
+  font-size:18px;
+  transition:0.3s;
+}
+nav a:hover{
+  color:#ff77a9;
+  transform:scale(1.1);
+}
+
+/* Main content */
+main{
+  padding:30px 20px;
+}
+
+/* Section titles */
+h2{
+  text-align:center;
+  color:#ff77a9;
+  margin-bottom:20px;
+  animation:fadeInUp 1.2s ease;
+}
+
+/* Info block & Form */
+.info-block, .form-container{
+  background-color: rgba(255,240,245,0.7);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:30px;
+  box-shadow:0 6px 15px rgba(255,182,193,0.2);
+  animation:fadeIn 1.5s ease;
+}
+.info-block p, .form-container p{
+  line-height:1.7;
+  margin-bottom:15px;
+}
+.highlight{
+  color:#ff77a9;
+  font-weight:bold;
+}
+
+form label{
+  display:block;
+  margin-top:15px;
+  font-weight:bold;
+}
+form input, form textarea{
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+  border:1px solid #ffc0cb;
+  border-radius:15px;
+  font-size:16px;
+  outline:none;
+  transition:0.3s;
+}
+form input:focus, form textarea:focus{
+  border-color:#ff77a9;
+  box-shadow:0 0 10px #ffb6c1;
+}
+form button{
+  margin-top:20px;
+  padding:10px 20px;
+  background-color:#ff77a9;
+  color:white;
+  border:none;
+  border-radius:15px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+form button:hover{
+  background-color:#ff1493;
+  transform:scale(1.05);
+}
+
+/* Iframe */
+iframe{
+  width:100%;
+  height:400px;
+  border:0;
+  margin-top:30px;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(255,182,193,0.2);
+  animation:fadeIn 1.5s ease;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:20px;
+  background: linear-gradient(135deg,#ffccd5,#cce7ff);
+  color:white;
+  margin-top:40px;
+  border-radius:30px 30px 0 0;
+  font-family:'Sacramento',cursive;
+  letter-spacing:1px;
+  box-shadow:0 -5px 15px rgba(255,182,193,0.2);
+  position:relative;
+  z-index:2;
+}
+
+/* Nút nhạc */
+#musicControl {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff77a9;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  z-index:1000;
+}
+#musicControl:hover { background-color:#ff1493; }
+
+/* Flower & Sparkle */
+.flower{
+  position:absolute;
+  width:15px;
+  height:15px;
+  background: url('https://emojigraph.org/media/softbank/cherry-blossom_1f338.png') no-repeat center/contain;
+  top:-20px;
+  animation:fall linear infinite;
+  opacity:0.8;
+}
+.sparkle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle infinite;
+  opacity:0.6;
+}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(120vh) rotate(360deg);}}
+@keyframes twinkle{0%,100%{opacity:0.3;transform:scale(1);}50%{opacity:1;transform:scale(1.5);}}
+</style>
+</head>
+<body>
+
+<header>📬 Liên Hệ Cà Phê Thiên Sứ 🌸</header>
+
+<nav>
+<a href="main.html">Trang Chủ</a>
+<a href="about.html">Giới Thiệu</a>
+<a href="contact.html">Liên Hệ</a>
+</nav>
+
+<!-- Nhạc nền -->
+<audio id="backgroundMusic" autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
+  Trình duyệt của bạn không hỗ trợ nhạc nền.
+</audio>
+<button id="musicControl">Tắt Nhạc</button>
+
+<main>
+<section class="info-block">
+  <h2>📍 Thông Tin Liên Hệ</h2>
+  <p><strong>Địa chỉ:</strong> Trường TCVN Bến Lức, Long An</p>
+  <p><strong>Điện thoại:</strong> 0903 992 993</p>
+  <p><strong>Email:</strong> <a href="mailto:cafemoc@example.com">tranthanhtuan@example.com</a></p>
+  <p><strong>Giờ mở cửa:</strong> 7:00 - 22:00 (Tất cả các ngày trong tuần)</p>
+</section>
+
+<section class="form-container">
+  <h2>✉️ Gửi Thông Tin Liên Hệ</h2>
+  <form action="mailto:tranthanhtuan1278@example.com" method="POST" enctype="text/plain">
+    <label for="name">Họ tên:</label>
+    <input type="text" id="name" name="Họ tên" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="Email" required>
+
+    <label for="message">Nội dung:</label>
+    <textarea id="message" name="Nội dung" rows="5" required></textarea>
+
+    <button type="submit">Gửi</button>
+  </form>
+</section>
+
+<section class="info-block">
+  <h2>🌍 Vị Trí Trên Bản Đồ</h2>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.438424949786!2d106.6931470748191!3d10.776889889368105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3e6853e7c9%3A0x2a3c0702dcd4690b!2zSOG7kyBUaOG7pyBDYWZlIC0gMjU3IMSQLiBUcuG7jW5nIFbDoG4gSOG7kyBCw6xuaCBUaMOgbmgsIFF14bqjbmcgMywgUXXhuq1uIDEsIFRow6BuaCBwaOG7kSBI4buNYyBN4bu5YyBDaMOtbmg!5e0!3m2!1svi!2s!4v1694013835793!5m2!1svi!2s"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
+</main>
+
+<footer>© 2025 Cà Phê Thiên Sứ </footer>
+
+<script>
+// Music control
+const music = document.getElementById('backgroundMusic');
+const musicControlBtn = document.getElementById('musicControl');
+musicControlBtn.addEventListener('click', () => {
+  if(music.paused){ music.play(); musicControlBtn.textContent='Tắt Nhạc'; }
+  else{ music.pause(); musicControlBtn.textContent='Bật Nhạc'; }
+});
+
+// Flower rơi
+for(let i=0;i<30;i++){
+  const flower=document.createElement('div');
+  flower.className='flower';
+  flower.style.left=Math.random()*100+'vw';
+  flower.style.animationDuration=(3+Math.random()*5)+'s';
+  flower.style.animationDelay=(Math.random()*5)+'s';
+  flower.style.transform='rotate('+Math.random()*360+'deg)';
+  document.body.appendChild(flower);
+}
+
+// Sparkle
+for(let i=0;i<20;i++){
+  const sparkle=document.createElement('div');
+  sparkle.className='sparkle';
+  sparkle.style.top=Math.random()*100+'vh';
+  sparkle.style.left=Math.random()*100+'vw';
+  sparkle.style.animationDuration=(2+Math.random()*3)+'s';
+  sparkle.style.animationDelay=(Math.random()*2)+'s';
+  document.body.appendChild(sparkle);
+}
+</script>
+
+</body>
+</html>
