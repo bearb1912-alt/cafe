@@ -163,9 +163,10 @@ button:hover{
     <div class="tab" id="registerTab">Đăng Ký</div>
   </div>
 
+  <!-- Đăng nhập bằng tên thay vì email -->
   <form id="loginForm">
-    <label for="loginEmail">Email</label>
-    <input type="email" id="loginEmail" placeholder="Nhập email" required>
+    <label for="loginName">Tên đăng nhập</label>
+    <input type="text" id="loginName" placeholder="Nhập tên" required>
     <label for="loginPassword">Mật khẩu</label>
     <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
     <button type="submit">Đăng Nhập</button>
@@ -220,12 +221,12 @@ registerTab.addEventListener('click', showRegister);
 toRegister.addEventListener('click', showRegister);
 toLogin.addEventListener('click', showLogin);
 
-// Giả lập đăng nhập
+// Giả lập đăng nhập (bằng tên + mật khẩu)
 loginForm.addEventListener('submit', e=>{
   e.preventDefault();
-  const email = loginForm.loginEmail.value.trim();
+  const name = loginForm.loginName.value.trim();
   const password = loginForm.loginPassword.value.trim();
-  if(!email||!password){
+  if(!name||!password){
     loginMessage.style.color='#f87171';
     loginMessage.textContent='Vui lòng điền đầy đủ thông tin.';
     return;
